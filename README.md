@@ -6,11 +6,13 @@ Como vimos anteriormente, React é uma biblioteca JavaScript de código aberto a
 
 ## O que é NextJS?
 
-Diferentemente do React, que se trata de uma biblioteca, o Next é um framework que fornece uma estrutura de desenvolvimento completa para a construção de aplicativos web escaláveis e otimizados e expande as funcionalidades do React.
-
 Uma biblioteca é um conjunto de ferramentas desenvolvidas para resolver problemas e tarefas comuns em diferentes projetos. Os desenvolvedores têm a liberdade de escolher quais ferramentas utilizarão e como o farão, garatindo maior flexibilidade.
 
 Por outro lado, um framework é uma estrutura mais rígida de desenvolvimento que define uma arquitetura para o projeto através de um conjunto de bibliotecas, ferramentas e padrões integrados. Em troca de ter a arquitetura do projeto pronta, os desenvolvedores não possuem tanta flexibilidade e trabalham dentro das limitações e convenções do framework.
+
+Diferentemente do React, que se trata de uma biblioteca, o Next é um framework que fornece uma estrutura de desenvolvimento completa para a construção de aplicativos web escaláveis e otimizados e expande as funcionalidades do React.
+
+**Importante**: no começo do ano de 2023, houve um grande salto de versões tanto do Next (versão 12 para a 13), quanto do React (versão 17 para a 18). Como se trata de uma grande mudança de funcionalidades e bem nova, a disponibilização de conteúdos ainda não é tão grande quanto para as versões anteriores, e algumas coisas ainda estão sujeitas a alterações (apesar da fase beta já ter se encerrado). Portanto a melhor ferramenta para se utilizar é a própria documentação e vale sempre conferir a data do material consultado. Para que todo conteúdo antigo não fosse inutilizado, as principais alterações podem ser feitas de maneira gradativa, então, esse arquivo irá conter um resumo de como o framework era utilizado anteriormente e como está sendo utilizado mais recentemente.
 
 ## Principais recursos
 
@@ -18,29 +20,30 @@ O React é uma ótima ferramenta para o desenvolvimento de aplicações web, no 
 
 ### Servidor Node
 
-    Tipicamente, em um projeto React puro, o Front-end e o Back-end são conectados diretamente, fazendo com que o conteúdo seja renderizado do lado do cliente (Client Side Rendering - CSR), pois depende do código JavaScript, que é executado no navegador do usuário. Consequentemente todo o HTML gerado através do JSX também é gerado somente no navegador do usuário, resultando em alguns problemas como atrasos ao carregar a página e baixo SEO.
+Tipicamente, em um projeto React puro, o Front-end e o Back-end são conectados diretamente, fazendo com que o conteúdo seja renderizado do lado do cliente (Client Side Rendering - CSR), pois depende do código JavaScript, que é executado no navegador do usuário. Consequentemente todo o HTML gerado através do JSX também é gerado somente no navegador do usuário, resultando em alguns problemas como atrasos ao carregar a página e baixo SEO.
 
-    O Next possui um servidor Node entre o Front-end e o Back-end da aplicação, possibilitando diferentes formas de renderização. Uma delas é a Renderização do Lado do Servidor (Server Side Rendering - SSR), o atual padrão. Esse modelo não é uma novidade e já era algo comum em PHP, por exemplo, no entanto, unindo o Node com o React, é possível renderizar as páginas e todo o HTML básico no servidor, antes de serem enviadas para o cliente, resultando em tempos de carregamento mais rápidos e melhor indexação da página. Além do SSR o Next também possibilita o próprio CSR, Static Site Generation (SSG) e Incremental Static Regeneration (ISR), que serão comentados conforme necessário.
+O Next possui um servidor Node entre o Front-end e o Back-end da aplicação, possibilitando diferentes formas de renderização. Uma delas é a Renderização do Lado do Servidor (Server Side Rendering - SSR), o atual padrão. Esse modelo não é uma novidade e já era algo comum em PHP, por exemplo, no entanto, unindo o Node com o React, é possível renderizar as páginas e todo o HTML básico no servidor, antes de serem enviadas para o cliente, resultando em tempos de carregamento mais rápidos e melhor indexação da página. Além do SSR o Next também possibilita o próprio CSR, Static Site Generation (SSG) e Incremental Static Regeneration (ISR), que serão comentados conforme necessário.
 
 ### Aplicações fullstack: (ADICIONAR)
 
-    Outra decorrência desse servidor Node entre o Front-end e o Back-end da aplicação é a facilidade para trabalhar com aplicações Fullstack.
+Outra decorrência desse servidor Node entre o Front-end e o Back-end da aplicação é a facilidade para trabalhar com aplicações Fullstack.
 
 ### Roteamento:
 
-    O React puro não fornece uma solução de roteamento integrada, o que significa que é necessário implementar seu próprio sistema ou usar bibliotecas da comunidade. O Next oferece um sistema de roteamento simples e intuitivo, permitindo a criação de rotas de forma mais fácil e organizada.
+O React puro não fornece uma solução de roteamento integrada, o que significa que é necessário implementar seu próprio sistema ou usar bibliotecas da comunidade. O Next oferece um sistema de roteamento simples e intuitivo, permitindo a criação de rotas de forma mais fácil e organizada.
 
 ### Otimizações de desempenho:
 
-    O Next também possui recursos integrados de otimização de desempenho, como carregamento de código assíncrono, divisão automática de código e dimensionamento de imagens. Essas otimizações ajudam a melhorar a velocidade de carregamento e a eficiência do aplicativo.
+O Next também possui recursos integrados de otimização de desempenho, como carregamento de código assíncrono, divisão automática de código e dimensionamento de imagens. Essas otimizações ajudam a melhorar a velocidade de carregamento e a eficiência do aplicativo.
 
 ### Configurações integradas
 
-    Ao criar um projeto com o Next, é possível habilitar algumas configurações que facilitam e otimizam o desenvolvimento. Sendo as principais:
-        - TypeScript: Considerado praticamente essencial em várias empresas, facilita muito o desenvolvimento e possui ótima integração com o vscode.
-        - Tailwind: Ferramenta muito popular atualmente para a maior produtividade no Front-end, vindo quase de bônus a responsividade.
-        - ESlint: Padroniza a formatação do código do projeto, como o uso de aspas simples ou duplas, quantidade de espaços na identação, utilização ou não de ponto e vírgula, entre outros.
-        - import alias: limpa e simplifica as importações, sendo possível utilizar, por exemplo, "@" sempre que deseja se referir à pasta /src, no lugar de precisar navegar até ela com "../../ etc". (otimizado com TypeScript)
+Ao criar um projeto com o Next, é possível habilitar algumas configurações que facilitam e otimizam o desenvolvimento. Sendo as principais:
+
+- TypeScript: Considerado praticamente essencial em várias empresas, facilita muito o desenvolvimento e possui ótima integração com o vscode.
+- Tailwind: Ferramenta muito popular atualmente para a maior produtividade no Front-end, vindo quase de bônus a responsividade.
+- ESlint: Padroniza a formatação do código do projeto, como o uso de aspas simples ou duplas, quantidade de espaços na identação, utilização ou não de ponto e vírgula, entre outros.
+- import alias: limpa e simplifica as importações, sendo possível utilizar, por exemplo, "@" sempre que deseja se referir à pasta /src, no lugar de precisar navegar até ela com "../../ etc". (otimizado com TypeScript)
 
 ## Algumas desvantagens
 
@@ -97,14 +100,16 @@ Ao utilizar o sistema de roteamento do Next, em qualquer versão, é possível m
 As versões antigas do Next possuiam um diretório específico `pages` que continha todas as páginas disponíveis dentro da aplicação. Para criar uma nova página era necessário somente criar um arquivo com o nome desejado dentro do diretório e usar `export default` com um componente do React. Então ao acessar `localhost:3000/home`, por exemplo, o componente exportado em `src/pages/home.tsx` (ou `src/pages/home/index.tsx`) era carregado. Também era possível criar subrotas adicionando outras pastas e arquivos, por exemplo: `src/pages/movies/about.tsx`. Caso desejasse criar um layout padrão em várias páginas, era necessário criar um arquivo `_App.tsx`, que poderia estar em apenas diretamente na pasta pages do projeto. E, por fim, as rotas de acesso ao back-end da aplicação eram localizadas em `pages/api/*.ts`, qualquer arquivo criado nessa pasta era reconhecido como uma rota da aplicação.
 
 No Next 13, uma grande mudança apresentada foi a troca da pasta pages para a pasta `app`, juntamente com a definição de "arquivos especiais" dentro dessa pasta. Esses arquivos possuem funcionalidades específicas dentro do projeto e os nomes em geral representam qual é essa funcionalidade. Por exemplo, dois desses arquivos podem ser vistos logo após iniciar o projeto, sendo eles:
-    - `page.tsx`: define o componente que será renderizado ao acessar a página (equivalente ao arquivo index.tsx que possuía um export default)
-    - `layout.tsx`: cria um layout para todas subrotas. Diferentemente do arquivo _App.tsx, é possível aninhar 
-    arquivos layout.tsx, definindo um layout para cada subconjunto de rotas.
+
+- `page.tsx`: define o componente que será renderizado ao acessar a página (equivalente ao arquivo index.tsx que possuía um export default)
+- `layout.tsx`: cria um layout para todas subrotas. Diferentemente do arquivo _App.tsx, é possível aninhar 
+arquivos layout.tsx, definindo um layout para cada subconjunto de rotas.
 
 Além dos dois arquivos padrôes também é possível criar os seguintes arquivos:
-    - `loading.tsx`: componente que será renderizado enquanto a página estiver sendo carregada.
-    - `not-found.tsx`: componente que será renderizado quando a URL inserida não for acessível (indefinida ou privada)
-    - `error.tsx`: componente que será renderizado quando acontecer algum erro (erro 500, por exemplo)
+
+- `loading.tsx`: componente que será renderizado enquanto a página estiver sendo carregada.
+- `not-found.tsx`: componente que será renderizado quando a URL inserida não for acessível (indefinida ou privada)
+- `error.tsx`: componente que será renderizado quando acontecer algum erro (erro 500, por exemplo)
 
 As rotas de acesso ao back-end da aplicação são definidas através da estrutura: `app/api/nome-da-rota/route.ts` (não necessariamente dentro da pasta api, mas é uma boa prática). Nesse arquivo, basta simplesmente definir funções assíncronas com o nome do método desejado.  
 
@@ -115,6 +120,12 @@ Como mencionado, outra grande vantagem do Next é a utilização do SSR, então 
 Em versões anteriores, o Next trabalhava com uma função para requisitar informações do servidor: `getServerSideProps()`. Ao definir essa função, o componente seria automaticamente identificado como server side e aguardaria o retorno das informações antes de ser renderizado.
 
 Juntamente com o Next 13, lançado no começo de 2023, o React também sofreu uma grande atualização (versão 18), que adicionou os chamados "server components", que foram logo abraçados pelo Next e são usados justamente para definir componentes que necessitam de informações do servidor. Para utilizá-los, basta definir um componente do React como async e fazer a request para obtenção das informações diretamente no corpo do componente!
+
+# Referências
+
+
+# Materiais para estudo
+
 
 
 Roteamento
@@ -133,14 +144,14 @@ Ao final da apresentação, dê um tempo para perguntas e esclarecimentos.
 
 Antes de prosseguirmos com a explicação, vale destacar algumas formas de tirar dúvidas e expandir o conhecimento: - Sempre que tiver alguma dúvida sobre o que foi apresentado, sinta-se à vontade para entrar em contato com os membros responsáveis pela capacitação (Pedro e Ariadne), nós sempre ficaremos felizes de ajudar. - Consulte a documentação, é importante saber como usá-la e é lá estão todas as informações oficiais do framework: - [Next.js Documentation](https://nextjs.org/docs) - documentação do Next.js. - [Learn Next.js](https://nextjs.org/learn) - tutorial interativo. - Caso seja algo mais específico, que não é tão fácil de entrar na documentação, Stackoverflow e chatGPT sempre serão boas opções, contanto que tente entender o que foi feito.
 
-    Obs: Ao consultar a documentação ou algum outro meio, lembre-se de certificar que se trata do Next 13, lançado esse ano, houve um grande salto desde a última versão e várias funcionalidades mudaram. Vale notar que o chatGPT ainda não possui informações após 2021, então tome cuidado ao utilizá-lo.
+Obs: Ao consultar a documentação ou algum outro meio, lembre-se de certificar que se trata do Next 13, lançado esse ano, houve um grande salto desde a última versão e várias funcionalidades mudaram. Vale notar que o chatGPT ainda não possui informações após 2021, então tome cuidado ao utilizá-lo.
 
 ### OBS: O que é roteamento?
 
-    No desenvolvimento web, o roteamento é o sistema que possibilita a navegação do usuário através de diferentes seções da aplicação, controlando o fluxo de navegação e exibição de conteúdo em uma aplicação. Esse controle do fluxo é feito a partir de rotas, ou URLs, que garantem que o usuário seja direcionado corretamente para as diferentes páginas e recursos.
+No desenvolvimento web, o roteamento é o sistema que possibilita a navegação do usuário através de diferentes seções da aplicação, controlando o fluxo de navegação e exibição de conteúdo em uma aplicação. Esse controle do fluxo é feito a partir de rotas, ou URLs, que garantem que o usuário seja direcionado corretamente para as diferentes páginas e recursos.
 
-    De forma simples, a URL, ou endereço, informa ao aplicativo o que o usuário deseja acessar. Por exemplo, imagine que um site possui um banco de dados sobre filmes. A URL base determina o nome do site, como `www.amantes-de-cinema.com`, e ao digitar esse link o usuário é direcionado para o site, que contém uma lista de filmes. Suponha que o usuário queira procurar as informações sobre um determinado filme, então ele pode adicionar à URL qual filme ele deseja saber a respeito, por exemplo `www.amantes-de-cinema.com/Inception-2010` ou `www.amantes-de-cinema.com/A-Quiet-Place-2018`. E então aparecerá uma página dedicada ao filme escolhido. Agora imagine que ele queira saber uma informação ainda mais específica sobre o filme, então ele pode digitar `www.amantes-de-cinema.com/Inception-2010/elenco` e ele será redirecionado a uma página dedicada exclusivamente para o elenco daquele filme. Por fim, imagine que o site também possui uma espécie de rede social, em que é possível entrar no perfil de um usuário, isso pode ser feito, por exemplo, através da URL `www.amantes-de-cinema.com/usuarios/PedroWChaves`.
+De forma simples, a URL, ou endereço, informa ao aplicativo o que o usuário deseja acessar. Por exemplo, imagine que um site possui um banco de dados sobre filmes. A URL base determina o nome do site, como `www.amantes-de-cinema.com`, e ao digitar esse link o usuário é direcionado para o site, que contém uma lista de filmes. Suponha que o usuário queira procurar as informações sobre um determinado filme, então ele pode adicionar à URL qual filme ele deseja saber a respeito, por exemplo `www.amantes-de-cinema.com/Inception-2010` ou `www.amantes-de-cinema.com/A-Quiet-Place-2018`. E então aparecerá uma página dedicada ao filme escolhido. Agora imagine que ele queira saber uma informação ainda mais específica sobre o filme, então ele pode digitar `www.amantes-de-cinema.com/Inception-2010/elenco` e ele será redirecionado a uma página dedicada exclusivamente para o elenco daquele filme. Por fim, imagine que o site também possui uma espécie de rede social, em que é possível entrar no perfil de um usuário, isso pode ser feito, por exemplo, através da URL `www.amantes-de-cinema.com/usuarios/PedroWChaves`.
 
-    No entando se toda vez que o usuário quiser navegar pela página ele tiver que manualmente digitar o endereço, surgirá uma quantidade enorme de problemas. O primeiro seria que o usuário teria uma experiência péssima com o site e o segundo seria: e se o usuário digitar um endereço que não existe? Então, caso não haja nenhum tipo de tratamento, ele cairia numa página de erro 404, ou seja, não encontrado. Para resolver esse tipo de problema é necessário que a própria aplicação possibilite a navegação dentro do site. Isso geralmente é feito através de links e botões.
+No entando se toda vez que o usuário quiser navegar pela página ele tiver que manualmente digitar o endereço, surgirá uma quantidade enorme de problemas. O primeiro seria que o usuário teria uma experiência péssima com o site e o segundo seria: e se o usuário digitar um endereço que não existe? Então, caso não haja nenhum tipo de tratamento, ele cairia numa página de erro 404, ou seja, não encontrado. Para resolver esse tipo de problema é necessário que a própria aplicação possibilite a navegação dentro do site. Isso geralmente é feito através de links e botões.
 
-    Isso permite que os usuários naveguem pela aplicação por meio de cliques em links ou pela digitação de URLs diretamente no navegador. O roteamento também pode envolver o tratamento de parâmetros na URL, como IDs de recursos ou informações de pesquisa, e a manipulação de eventos, como o redirecionamento para uma página de erro quando uma rota não é encontrada.
+Isso permite que os usuários naveguem pela aplicação por meio de cliques em links ou pela digitação de URLs diretamente no navegador. O roteamento também pode envolver o tratamento de parâmetros na URL, como IDs de recursos ou informações de pesquisa, e a manipulação de eventos, como o redirecionamento para uma página de erro quando uma rota não é encontrada.
