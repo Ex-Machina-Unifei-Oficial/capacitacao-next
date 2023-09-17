@@ -2,13 +2,13 @@
 
 ## Introdução
 
-Como vimos anteriormente, React é uma biblioteca JavaScript de código aberto amplamente utilizada para construir interfaces de usuário (UI) interativas e responsivas. O React permite a criação de componentes reutilizáveis que podem ser combinados de diferentes formas a fim de criar interfaces complexas de maneira eficiente.
-
-## O que é NextJS?
-
 Uma biblioteca é um conjunto de ferramentas desenvolvidas para resolver problemas e tarefas comuns em diferentes projetos. Os desenvolvedores têm a liberdade de escolher quais ferramentas utilizarão e como o farão, garatindo maior flexibilidade.
 
 Por outro lado, um framework é uma estrutura mais rígida de desenvolvimento que define uma arquitetura para o projeto através de um conjunto de bibliotecas, ferramentas e padrões integrados. Em troca de ter a arquitetura do projeto pronta, os desenvolvedores não possuem tanta flexibilidade e trabalham dentro das limitações e convenções do framework.
+
+Como vimos anteriormente, React é uma biblioteca JavaScript de código aberto amplamente utilizada para construir interfaces de usuário (UI) interativas e responsivas. O React permite a criação de componentes reutilizáveis que podem ser combinados de diferentes formas a fim de criar interfaces complexas de maneira eficiente, sendo assim, uma ótima ferramenta para o desenvolvimento de aplicações web. No entanto, sozinho, possui algumas limitações. Inclusive, a partir da versão 18, o próprio site recomenda a utilização de um framework para trabalhar com o React - principalmente em aplicações Fullstack - outras opções fora o Next são Remix, Gatsby e Expo (mobile).
+
+## O que é NextJS?
 
 Diferentemente do React, que se trata de uma biblioteca, o Next é um framework que fornece uma estrutura de desenvolvimento completa para a construção de aplicativos web escaláveis e otimizados e expande as funcionalidades do React.
 
@@ -16,44 +16,44 @@ Diferentemente do React, que se trata de uma biblioteca, o Next é um framework 
 
 ## Principais recursos
 
-O React é uma ótima ferramenta para o desenvolvimento de aplicações web, no entanto, sozinho, possui algumas limitações. Inclusive, a partir da versão 18, o próprio site recomenda a utilização de um framework para trabalhar com o React - principalmente em aplicações Fullstack - outras opções fora o Next são Remix, Gatsby e Expo (mobile).
-
 ### Servidor Node
 
-Tipicamente, em um projeto React puro, o Front-end e o Back-end são conectados diretamente, fazendo com que o conteúdo seja renderizado do lado do cliente (Client Side Rendering - CSR), pois depende do código JavaScript, que é executado no navegador do usuário. Consequentemente todo o HTML gerado através do JSX também é gerado somente no navegador do usuário, resultando em alguns problemas como atrasos ao carregar a página e baixo SEO.
+Tipicamente, em um projeto React puro, o Front-end e o Back-end são conectados diretamente, fazendo com que o conteúdo seja renderizado do lado do cliente (Client Side Rendering - CSR), pois depende do código JavaScript, que é executado no navegador do usuário. Consequentemente todo o HTML gerado através do JSX também é gerado somente no navegador do usuário, resultando em alguns problemas, como atrasos ao carregar a página e baixo SEO.
 
-O Next possui um servidor Node entre o Front-end e o Back-end da aplicação, possibilitando diferentes formas de renderização. Uma delas é a Renderização do Lado do Servidor (Server Side Rendering - SSR), o atual padrão. Esse modelo não é uma novidade e já era algo comum em PHP, por exemplo, no entanto, unindo o Node com o React, é possível renderizar as páginas e todo o HTML básico no servidor, antes de serem enviadas para o cliente, resultando em tempos de carregamento mais rápidos e melhor indexação da página. Além do SSR o Next também possibilita o próprio CSR, Static Site Generation (SSG) e Incremental Static Regeneration (ISR), que serão comentados conforme necessário.
+O Next possui um servidor Node entre o Front-end e o Back-end da aplicação, possibilitando diferentes formas de renderização. Uma delas é a Renderização do Lado do Servidor (Server Side Rendering - SSR), o atual padrão. Esse modelo não é uma novidade e já era algo comum em PHP, por exemplo, no entanto, unindo o Node com o React, é possível renderizar as páginas e todo o HTML básico no servidor, antes de serem enviadas para o cliente, resultando em tempos de carregamento mais rápidos (sendo possível armazenar a página em cache) e melhor indexação da página. Além do SSR o Next também possibilita o próprio CSR, Static Site Generation (SSG) e Incremental Static Regeneration (ISR), que serão comentados conforme necessário.
 
-### Aplicações fullstack: (ADICIONAR)
+Para obter a interatividade com o usuário, o React utiliza dos hooks, que, por natureza, funcionam do lado do cliente (CSR). Ou seja, para utilizar os hooks do React dentro do Next, é preciso transformar o componente desejado em Client Side (sendo possível também, mesclar as duas estratégias) e isso é feito através da diretiva `'use client'`, que precisa aparecer no topo do arquivo desejado.
 
-Outra decorrência desse servidor Node entre o Front-end e o Back-end da aplicação é a facilidade para trabalhar com aplicações Fullstack.
+### Aplicações Fullstack
+
+Outra decorrência desse servidor Node entre o Front-end e o Back-end da aplicação é a facilidade para trabalhar com aplicações Fullstack. O próprio Next fornece a possibilidade de integrar rotas na aplicação, o que geralmente é feito na pasta `/api` e será mais explorado nesse documento.
 
 ### Roteamento:
 
-O React puro não fornece uma solução de roteamento integrada, o que significa que é necessário implementar seu próprio sistema ou usar bibliotecas da comunidade. O Next oferece um sistema de roteamento simples e intuitivo, permitindo a criação de rotas de forma mais fácil e organizada.
+O React puro não fornece uma solução de roteamento integrada, o que significa que é necessário usar bibliotecas da comunidade (React Router) ou implementar seu próprio sistema. O Next oferece um sistema de roteamento simples e intuitivo (Next Router), permitindo a criação de rotas de forma mais fácil e organizada.
 
 ### Otimizações de desempenho:
 
-O Next também possui recursos integrados de otimização de desempenho, como carregamento de código assíncrono, divisão automática de código e dimensionamento de imagens. Essas otimizações ajudam a melhorar a velocidade de carregamento e a eficiência do aplicativo.
+Por trabalhar com SSR, O Next no geral irá possuir um desempenho melhor do que o React puro e ele também possui recursos integrados de otimização de desempenho, como renderização apenas do que foi alterado e dimensionamento de imagens. Essas otimizações ajudam a melhorar a velocidade de carregamento e a eficiência do aplicativo.
 
 ### Configurações integradas
 
 Ao criar um projeto com o Next, é possível habilitar algumas configurações que facilitam e otimizam o desenvolvimento. Sendo as principais:
 
-- TypeScript: Considerado praticamente essencial em várias empresas, facilita muito o desenvolvimento e possui ótima integração com o vscode.
-- Tailwind: Ferramenta muito popular atualmente para a maior produtividade no Front-end, vindo quase de bônus a responsividade.
-- ESlint: Padroniza a formatação do código do projeto, como o uso de aspas simples ou duplas, quantidade de espaços na identação, utilização ou não de ponto e vírgula, entre outros.
-- import alias: limpa e simplifica as importações, sendo possível utilizar, por exemplo, "@" sempre que deseja se referir à pasta /src, no lugar de precisar navegar até ela com "../../ etc". (otimizado com TypeScript)
+- **TypeScript**: Considerado essencial em várias empresas, facilita muito o desenvolvimento e possui ótima integração com o vscode.
+- **Tailwind**: Biblioteca CSS muito popular atualmente para a maior produtividade no Front-end, vindo quase de bônus a responsividade.
+- **ESlint**: Padroniza a formatação do código do projeto, como o uso de aspas simples ou duplas, quantidade de espaços na identação, utilização ou não de ponto e vírgula, entre outros.
+- **import alias**: Limpa e simplifica e facilita as importações, sendo possível utilizar, por exemplo, "@" sempre que deseja se referir à pasta /src, no lugar de precisar navegar até ela com "../../ etc". (otimizado com TypeScript)
 
 ## Algumas desvantagens
 
-O Next adiciona uma camada de complexidade em relação ao React puro, sendo necessário aprender sua arquitetura, roteamento e renderização do lado do servidor (SSR). Isso pode exigir algum tempo para se familiarizar, aumentando a curva de aprendizado inicial.
+- O Next adiciona uma camada de complexidade em relação ao React puro, sendo necessário aprender sua arquitetura, roteamento e renderização do lado do servidor (SSR). Isso pode exigir algum tempo para se familiarizar, aumentando a curva de aprendizado inicial.
 
-O Next é um framework que oferece muitos recursos integrados. No entanto, se o seu projeto não precisa de todas essas funcionalidades, pode haver uma sobrecarga de recursos desnecessários, aumentando a complexidade do projeto, o tamanho do pacote e o tempo de inicialização do aplicativo.
+- O Next é um framework que oferece muitos recursos integrados. No entanto, se o seu projeto não precisa de tantas funcionalidades, pode haver uma sobrecarga de recursos desnecessários, aumentando a complexidade do projeto e o tamanho do pacote.
 
-O uso do Next significa depender do ecossistema específico dessa ferramenta. Isso pode significar ficar limitado às versões e atualizações, o que pode causar problemas de compatibilidade, atrasos em obter novos recursos ou correções de bugs.
+- O uso do Next significa depender do ecossistema específico dessa ferramenta. Isso pode significar ficar limitado às versões e atualizações, o que pode causar problemas de compatibilidade e atrasos em obter novos recursos ou correções de bugs.
 
-Um último aspecto a ser mencionado é a maior dificuldade de portabilidade entre aplicações com outros frameworks. Uma das vantagens do React é poder transicionar facilmente componentes de uma aplicação para outra, no entanto, com o Next, alguns aspectos se tornam mais específicos do framework, como componentes que utilizam SSR ou roteamento, sendo necessário adaptar mais código para a reutilização entre aplicações.
+- Um último aspecto a ser mencionado é a maior dificuldade de portabilidade entre aplicações com outros frameworks. Uma das vantagens do React é poder transicionar facilmente componentes de uma aplicação para outra, no entanto, com o Next, alguns aspectos se tornam mais específicos do framework, como componentes que utilizam SSR ou roteamento, sendo necessário adaptar mais código para a reutilização entre aplicações.
 
 No entanto, como a própria documentação do React não recomenda mais a criação de um projeto puro, com `create-react-app`, as desvantagens não são próprias do Next e se aplicam a quase qualquer framework baseado em React.
 
@@ -64,12 +64,12 @@ No entanto, como a própria documentação do React não recomenda mais a criaç
 ```bash
 npx create-next-app@latest --typescript [nome-do-projeto]
 # ou
-yarn create next-app --typescript [nome-do-projeto]
+yarn create next-app --typescript [nome-do-projeto] # Certifique-se de utilizar a versão mais recente
 
 # Obs: não é necessário utilizar typescript, no entando muito recomendado
 ```
 
-Logo em seguida apareceram algumas perguntas, referentes às configurações mencionadas acima, é recomendado aceitar todos padrões (exceto o Tailwind, por agora). Em seguida, abra a pasta criada e rode o projeto com:
+Logo em seguida aparecerão algumas perguntas, referentes às configurações mencionadas acima, é recomendado aceitar todos padrões (exceto o Tailwind, por agora). Em seguida, abra a pasta criada e rode o projeto com:
 
 ```bash
 npm run dev
@@ -77,7 +77,7 @@ npm run dev
 yarn dev
 ```
 
-Abra o localhost na porta informada (geralmente 300) no navegador e aparecerá a página padrão do Next para projetos novos.
+Abra o localhost na porta informada (geralmente 3000) no navegador e aparecerá a página padrão do Next para projetos novos.
 
 Alternativamente, também é possível fazer a instalação e configurar o projeto manualmente, para isso, consulte a [Documentação Oficial](https://nextjs.org/docs/getting-started/installation)
 
@@ -95,15 +95,17 @@ O arquivo `app/page.tsx` é a primeira página que o projeto irá carregar e ao 
 
 ## Roteamento
 
-Ao utilizar o sistema de roteamento do Next, em qualquer versão, é possível mapear URLs específicas para páginas, componentes ou ações correspondentes na aplicação. Como dito anteriormente, houve um grande salto nas versões do Next 12 para o 13, desse modo é interessante apresentar como era antes e alguns problemas e como é a versão nova e como os problemas foram resolvidos.
+Ao utilizar o sistema de roteamento do Next, em qualquer versão, é possível mapear URLs para arquivos de acordo com a sua localização nos diretórios no projeto. Esses arquivos podem conter páginas, componentes ou chamadas de API.
 
-As versões antigas do Next possuiam um diretório específico `pages` que continha todas as páginas disponíveis dentro da aplicação. Para criar uma nova página era necessário somente criar um arquivo com o nome desejado dentro do diretório e usar `export default` com um componente do React. Então ao acessar `localhost:3000/home`, por exemplo, o componente exportado em `src/pages/home.tsx` (ou `src/pages/home/index.tsx`) era carregado. Também era possível criar subrotas adicionando outras pastas e arquivos, por exemplo: `src/pages/movies/about.tsx`. Caso desejasse criar um layout padrão em várias páginas, era necessário criar um arquivo `_App.tsx`, que poderia estar em apenas diretamente na pasta pages do projeto. E, por fim, as rotas de acesso ao back-end da aplicação eram localizadas em `pages/api/*.ts`, qualquer arquivo criado nessa pasta era reconhecido como uma rota da aplicação.
+As versões antigas do Next possuiam o diretório `pages` que continha todas as páginas disponíveis dentro da aplicação. Para criar uma nova página era necessário somente criar um arquivo com o nome desejado dentro do diretório e usar `export default` com um componente do React. Então, ao acessar `localhost:3000/home`, por exemplo, o componente exportado em `src/pages/home.tsx` (ou `src/pages/home/index.tsx`) era carregado. Também era possível criar subrotas adicionando outras pastas e arquivos, por exemplo: `src/pages/movies/about.tsx`. Caso desejasse criar um layout padrão em várias páginas, era necessário criar um arquivo `_app.tsx`, que poderia estar apenas diretamente na pasta pages do projeto. E, por fim, as rotas de acesso ao back-end da aplicação eram localizadas em `pages/api/*.ts` e qualquer arquivo criado nessa pasta era reconhecido como uma rota da aplicação.
 
-No Next 13, uma grande mudança apresentada foi a troca da pasta pages para a pasta `app`, juntamente com a definição de "arquivos especiais" dentro dessa pasta. Esses arquivos possuem funcionalidades específicas dentro do projeto e os nomes em geral representam qual é essa funcionalidade. Por exemplo, dois desses arquivos podem ser vistos logo após iniciar o projeto, sendo eles:
+No Next 13, uma grande mudança apresentada foi a troca da pasta pages para a pasta `app` e, dentro dela, a definição de "arquivos especiais", que possuem funcionalidades e nomes próprios dentro do projeto. Por exemplo, dois desses arquivos podem ser vistos logo após iniciar o projeto, sendo eles:
 
 - `page.tsx`: define o componente que será renderizado ao acessar a página (equivalente ao arquivo index.tsx que possuía um export default)
-- `layout.tsx`: cria um layout para todas subrotas. Diferentemente do arquivo _App.tsx, é possível aninhar 
-arquivos layout.tsx, definindo um layout para cada subconjunto de rotas.
+- `layout.tsx`: cria um layout para todas subrotas. Diferentemente do arquivo \_App.tsx, é possível aninhar
+  arquivos layout.tsx, definindo um layout para cada subconjunto de rotas.
+
+**OBS: Esses dois arquivos são obrigatórios dentro da pasta app**
 
 Além dos dois arquivos padrôes também é possível criar os seguintes arquivos:
 
@@ -111,7 +113,7 @@ Além dos dois arquivos padrôes também é possível criar os seguintes arquivo
 - `not-found.tsx`: componente que será renderizado quando a URL inserida não for acessível (indefinida ou privada)
 - `error.tsx`: componente que será renderizado quando acontecer algum erro (erro 500, por exemplo)
 
-As rotas de acesso ao back-end da aplicação são definidas através da estrutura: `app/api/nome-da-rota/route.ts` (não necessariamente dentro da pasta api, mas é uma boa prática). Nesse arquivo, basta simplesmente definir funções assíncronas com o nome do método desejado.  
+As rotas de acesso ao back-end da aplicação são definidas através da estrutura: `app/api/nome-da-rota/route.ts` (não necessariamente dentro da pasta api, mas é uma boa prática). Nesse arquivo, basta simplesmente definir funções assíncronas com o nome do método desejado.
 
 ## Server Side Rendering
 
@@ -119,32 +121,16 @@ Como mencionado, outra grande vantagem do Next é a utilização do SSR, então 
 
 Em versões anteriores, o Next trabalhava com uma função para requisitar informações do servidor: `getServerSideProps()`. Ao definir essa função, o componente seria automaticamente identificado como server side e aguardaria o retorno das informações antes de ser renderizado.
 
-Juntamente com o Next 13, lançado no começo de 2023, o React também sofreu uma grande atualização (versão 18), que adicionou os chamados "server components", que foram logo abraçados pelo Next e são usados justamente para definir componentes que necessitam de informações do servidor. Para utilizá-los, basta definir um componente do React como async e fazer a request para obtenção das informações diretamente no corpo do componente!
+A versão 18 do React adicionou os chamados "server components" ou "componentes assíncronos", que foram logo abraçados pelo Next e são utilizados justamente para definir componentes que necessitam de informações do servidor. Para utilizá-los, basta definir um componente do React como async e fazer a request para obtenção das informações diretamente no corpo do componente!
 
 # Referências
 
+- [Documentação do Next](https://nextjs.org/docs)
+- [Tutorial Next](https://nextjs.org/learn)
 
 # Materiais para estudo
 
-
-
-Roteamento
-
-Server-side rendering
-O que é server-side rendering?
-Como funciona no NextJS?
-Vantagens e desvantagens
-
-Dicas:
-
-Explique a importância do NextJS para a construção de aplicações web mais complexas.
-Mostre exemplos de como o roteamento funciona e como ele pode ser utilizado na prática.
-Mostre também exemplos de como o server-side rendering e o static site generation podem melhorar a experiência do usuário e a performance da aplicação.
-Ao final da apresentação, dê um tempo para perguntas e esclarecimentos.
-
-Antes de prosseguirmos com a explicação, vale destacar algumas formas de tirar dúvidas e expandir o conhecimento: - Sempre que tiver alguma dúvida sobre o que foi apresentado, sinta-se à vontade para entrar em contato com os membros responsáveis pela capacitação (Pedro e Ariadne), nós sempre ficaremos felizes de ajudar. - Consulte a documentação, é importante saber como usá-la e é lá estão todas as informações oficiais do framework: - [Next.js Documentation](https://nextjs.org/docs) - documentação do Next.js. - [Learn Next.js](https://nextjs.org/learn) - tutorial interativo. - Caso seja algo mais específico, que não é tão fácil de entrar na documentação, Stackoverflow e chatGPT sempre serão boas opções, contanto que tente entender o que foi feito.
-
-Obs: Ao consultar a documentação ou algum outro meio, lembre-se de certificar que se trata do Next 13, lançado esse ano, houve um grande salto desde a última versão e várias funcionalidades mudaram. Vale notar que o chatGPT ainda não possui informações após 2021, então tome cuidado ao utilizá-lo.
+**Obs: Ao consultar a documentação ou algum outro meio, lembre-se de certificar que se trata do Next 13**
 
 ### OBS: O que é roteamento?
 
