@@ -42,8 +42,8 @@ Ao criar um projeto com o Next, é possível habilitar algumas configurações q
 
 - **TypeScript**: Considerado essencial em várias empresas, facilita muito o desenvolvimento e possui ótima integração com o vscode.
 - **Tailwind**: Biblioteca CSS muito popular atualmente para a maior produtividade no Front-end, vindo quase de bônus a responsividade.
-- **ESlint**: Padroniza a formatação do código do projeto, como o uso de aspas simples ou duplas, quantidade de espaços na identação, utilização ou não de ponto e vírgula, entre outros.
-- **import alias**: Limpa e simplifica e facilita as importações, sendo possível utilizar, por exemplo, "@" sempre que deseja se referir à pasta /src, no lugar de precisar navegar até ela com "../../ etc". (otimizado com TypeScript)
+- **ESlint**: Identifica possíveis erros de sintaxe e padroniza a formatação do código do projeto, como o uso de aspas simples ou duplas, quantidade de espaços na identação, utilização ou não de ponto e vírgula, entre outros.
+- **import alias**: Limpa, simplifica e facilita as importações, sendo possível utilizar, por exemplo, "@" sempre que deseja se referir à pasta /src, no lugar de precisar navegar até ela com "../../ etc". (otimizado com TypeScript)
 
 ## Algumas desvantagens
 
@@ -121,18 +121,72 @@ Como mencionado, outra grande vantagem do Next é a utilização do SSR, então 
 
 Em versões anteriores, o Next trabalhava com uma função para requisitar informações do servidor: `getServerSideProps()`. Ao definir essa função, o componente seria automaticamente identificado como server side e aguardaria o retorno das informações antes de ser renderizado.
 
+```TypeScript
+type ServerProps = {
+  data: Object; // não aconselhável
+};
+
+export async function getServerSideProps() {
+  const res = await fetch(
+    `https://api.github.com/users/Ex-Machina-Unifei-Oficial`
+  );
+  const data = await res.json();
+
+  return { props: { data } };
+}
+
+const ServerSideComponent = ({ data }: ServerProps) => {
+  return (
+    <div className="bg-yellow-100 w-full h-full">
+      <h1 className="font-bold text-xl">Página de informações do ex machina</h1>
+      <p>{JSON.stringify(data)}</p>
+    </div>
+  );
+};
+
+export default ServerSideComponent
+```
+
 A versão 18 do React adicionou os chamados "server components" ou "componentes assíncronos", que foram logo abraçados pelo Next e são utilizados justamente para definir componentes que necessitam de informações do servidor. Para utilizá-los, basta definir um componente do React como async e fazer a request para obtenção das informações diretamente no corpo do componente!
 
-# Referências
+```TypeScript
+const ServerComponent = async () => { // lembre-se de definir o componente como async
+  const res = await fetch(
+    `https://api.github.com/users/Ex-Machina-Unifei-Oficial`
+  );
+  const data = await res.json();
+
+  return (
+    <div className="bg-yellow-100 w-full h-full">
+      <h1 className="font-bold text-xl">Página de informações do ex machina</h1>
+      <p>{JSON.stringify(data)}</p>
+    </div>
+  );
+};
+
+export default ServerComponent;
+```
+
+# Referências e Materiais para Estudo
 
 - [Documentação do Next](https://nextjs.org/docs)
 - [Tutorial Next](https://nextjs.org/learn)
 
-# Materiais para estudo
+- Conteúdo em portguês:
+
+  - [Tutorial iniciante Next 13](https://www.youtube.com/watch?v=2da8JUmNX8M)
+  - [Como usar a pasta app](https://www.youtube.com/watch?v=hlZ_qZvL3e8)
+  - [RocketSeat - Next 12 do zero](https://www.youtube.com/watch?v=2LS6rP3ykJk)
+  - [RocketSeat - Tudo que você precisa saber sobre o Next 13](https://www.youtube.com/watch?v=0zl72thBKzo)
+  - [RocketSeat - React server components](https://www.youtube.com/watch?v=L1osqF17iDM)
+
+- Conteúdo em inglês:
+  - [Next 13 Api Routes](https://www.youtube.com/watch?v=vrR4MlB7nBI)
+  - [Learn Next 13 with this project](https://www.youtube.com/watch?v=NgayZAuTgwM)
 
 **Obs: Ao consultar a documentação ou algum outro meio, lembre-se de certificar que se trata do Next 13**
 
-### OBS: O que é roteamento?
+### Extra: O que é roteamento?
 
 No desenvolvimento web, o roteamento é o sistema que possibilita a navegação do usuário através de diferentes seções da aplicação, controlando o fluxo de navegação e exibição de conteúdo em uma aplicação. Esse controle do fluxo é feito a partir de rotas, ou URLs, que garantem que o usuário seja direcionado corretamente para as diferentes páginas e recursos.
 
