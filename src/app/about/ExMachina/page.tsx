@@ -1,7 +1,7 @@
 // "use client";
 // // Client Side
 // import { useEffect, useState } from "react";
-// import { delay } from "@/utils/funtions";
+// import { delay } from "@/utils/functions";
 
 // const ExMachinaInfo = () => {
 //   const [data, setData] = useState("");
