@@ -115,6 +115,59 @@ Além dos dois arquivos padrôes também é possível criar os seguintes arquivo
 
 As rotas de acesso ao back-end da aplicação são definidas através da estrutura: `app/api/nome-da-rota/route.ts` (não necessariamente dentro da pasta api, mas é uma boa prática). Nesse arquivo, basta simplesmente definir funções assíncronas com o nome do método desejado.
 
+### Rotas dinâmicas
+
+Rotas dinâmicas são rotas que aceitam um parâmetro para definir o que será renderizado. O exemplo mais clássico são páginas de usuário: não é preciso criar uma página própria para cada usuário de um site ou rede social (aumentando consideravelmente o tamanho do pacote para o deploy do servidor), basta criar uma rota dinâmica que receba qual é o id desse usuário e então buscar as informações e renderizá-las na tela. Outro exemplo clássico é a página de detalhes de algum produto.
+
+O modo de organização das rotas dinâmicas se manteve da versão 12 para 13 do Next: basta nomear uma pasta (ou arquivo na versão 12) utilizando "[]", por exemplo: `/products/[id]`. Então o Next irá automaticamente entender que se trata de uma rota dinâmica e aceitar "qualquer" valor que for passado após `products/` como o id. A diferença está em como utilizar esse valor em cada versão.
+
+No Next 12: Basta utilizar o hook useRouter() e acessar o parâmetro desejado em `router.query`, seguindo o exemplo de produtos:
+
+```TypeScript
+import { useRouter } from "next/router";
+
+const Product = () => {
+  const router = useRouter();
+  return (
+    <>
+      <h1 className="font-bold text-xl">
+        Página do produto: {router.query.id}
+      </h1>
+    </>
+  );
+};
+
+export default Product;
+// Note que aqui não está sendo feita nenhuma requisição com o id passado, apenas renderizando-o na tela.
+```
+
+No Next 13: No lugar de obter o parâmetro utilizando a própria query, é possível acessá-lo nas props do componente:
+
+```TypeScript
+type ProductProps = {
+  params: { id: string };
+};
+
+const Product = ({ params }: ProductProps) => {
+  return (
+    <>
+      <h1 className="font-bold text-xl">Página do produto: {params.id}</h1>
+    </>
+  );
+};
+
+export default Product;
+// Note que aqui não está sendo feita nenhuma requisição com o id passado, apenas renderizando-o na tela.
+```
+
+### Grupos
+
+Uma novidade do Next 13 foi o arquivo especial layout e a possibilidade de definir vários layouts comuns para cada parte da subrota, sendo necessário apenas adicionar o arquivo com o conteúdo desejado. No entanto, e se for preciso substituir um layout no lugar de adicionar outro mais interno? Essa é uma possível utilização dos grupos no sistema de roteamento.
+
+Tipicamente, ao criar uma pasta dentro do sistema de arquivos do Next, ela automaticamente se torna uma rota ao adicionar o arquivo "page". Porém, com os grupos, é possível criar pastas que não irão alterar a rota, mas que ainda é possível utilizar os arquivos especiais, como o próprio layout. Com isso, é possível agrupar algumas rotas para que tenham um layout (error, not-found, etc) próprio, sem alterar o acesso a essa rota. Ou seja, todas pastas (rotas) de um grupo poderão ter um layout, enquanto pastas dentro de outro grupo terão outro layout.
+
+Para criar um grupo basta adicionar "()" ao seu nome, por exemplo: `/(authorized)/...`, e utilizá-la normalmente. Outra utilidade dos grupos seria para a própria organização das rotas, separando as privadas das públicas, por exemplo.
+
 ## Server Side Rendering
 
 Como mencionado, outra grande vantagem do Next é a utilização do SSR, então é necessário pelo menos introduzir o assunto para que ele seja aprofundado ao longo do tempo.
