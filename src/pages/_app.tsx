@@ -9,10 +9,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>NextJS 12</title>
       </Head>
 
-      <div className="bg-blue-500 h-screen flex flex-col items-center justify-center">
+      <div className="bg-blue-500 flex flex-col items-center justify-center">
         <h1 className="text-lg">Layout Comum Antigo</h1>
-        <Component {...pageProps} />
       </div>
+      <Component {...pageProps} />
     </>
   );
 }
