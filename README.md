@@ -119,7 +119,7 @@ As rotas de acesso ao back-end da aplicação são definidas através da estrutu
 
 Rotas dinâmicas são rotas que aceitam um parâmetro para definir o que será renderizado. O exemplo mais clássico são páginas de usuário: não é preciso criar uma página própria para cada usuário de um site ou rede social (aumentando consideravelmente o tamanho do pacote para o deploy do servidor), basta criar uma rota dinâmica que receba qual é o id desse usuário e então buscar as informações e renderizá-las na tela. Outro exemplo clássico é a página de detalhes de algum produto.
 
-O modo de organização das rotas dinâmicas se manteve da versão 12 para 13 do Next: basta nomear uma pasta (ou arquivo na versão 12) utilizando "[]", por exemplo: `/products/[id]`. Então o Next irá automaticamente entender que se trata de uma rota dinâmica e aceitar "qualquer" valor que for passado após `products/` como o id. A diferença está em como utilizar esse valor em cada versão.
+O modo de organização das rotas dinâmicas se manteve da versão 12 para 13 do Next: basta nomear uma pasta (ou arquivo na versão 12) utilizando "[ ]", por exemplo: `/products/[id]`. Então o Next irá automaticamente entender que se trata de uma rota dinâmica e aceitar "qualquer" valor que for passado após `products/` como o id. A diferença está em como utilizar esse valor em cada versão.
 
 No Next 12: Basta utilizar o hook useRouter() e acessar o parâmetro desejado em `router.query`, seguindo o exemplo de produtos:
 
@@ -166,7 +166,7 @@ Uma novidade do Next 13 foi o arquivo especial layout e a possibilidade de defin
 
 Tipicamente, ao criar uma pasta dentro do sistema de arquivos do Next, ela automaticamente se torna uma rota ao adicionar o arquivo "page". Porém, com os grupos, é possível criar pastas que não irão alterar a rota, mas que ainda é possível utilizar os arquivos especiais, como o próprio layout. Com isso, é possível agrupar algumas rotas para que tenham um layout (error, not-found, etc) próprio, sem alterar o acesso a essa rota. Ou seja, todas pastas (rotas) de um grupo poderão ter um layout, enquanto pastas dentro de outro grupo terão outro layout.
 
-Para criar um grupo basta adicionar "()" ao seu nome, por exemplo: `/(authorized)/...`, e utilizá-la normalmente. Outra utilidade dos grupos seria para a própria organização das rotas, separando as privadas das públicas, por exemplo.
+Para criar um grupo basta adicionar "( )" ao seu nome, por exemplo: `/(authorized)/...`, e utilizá-la normalmente. Outra utilidade dos grupos seria para a própria organização das rotas, separando as privadas das públicas, por exemplo.
 
 ## Server Side Rendering
 
@@ -220,6 +220,14 @@ const ServerComponent = async () => { // lembre-se de definir o componente como 
 export default ServerComponent;
 ```
 
+## API
+
+Em ambas versões do Next, é uma boa prática colocar as rotas para acesso ao servidor utilizando a pasta `api` (dentro de pages ou app), então esse modelo será seguido. Essas rotas definem operações que serão realizadas pelo servidor do Next, como, por exemplo, acessar o banco de dados da aplicação. Essas operações, por sua vez, são realizadas através de Handlers para cada método de requisição (get, put, post, delete, etc), onde é definido o que será de fato feito quando determinada requisição for feita para a rota.
+
+O exemplo mais básico é um CRUD (create, read, update, delete) de usuários de algum site: na aplicação é definida uma rota que irá lidar com o gerenciamento dos usuários registrados na aplicação, sendo possível adicionar um novo, consultar os existentes, atualizar e deletar usuários.
+
+Exemplos de como construir essas rotas se encontram dentro da pasta pages e app desse repositório.
+
 # Referências e Materiais para Estudo
 
 - [Documentação do Next](https://nextjs.org/docs)
@@ -232,10 +240,13 @@ export default ServerComponent;
   - [RocketSeat - Next 12 do zero](https://www.youtube.com/watch?v=2LS6rP3ykJk)
   - [RocketSeat - Tudo que você precisa saber sobre o Next 13](https://www.youtube.com/watch?v=0zl72thBKzo)
   - [RocketSeat - React server components](https://www.youtube.com/watch?v=L1osqF17iDM)
+  - [Novo modelo de rotas api com next 13](https://www.youtube.com/watch?v=Vvu509Q3jY0)
+  - [Server Actions](https://www.youtube.com/watch?v=IhIdy-r4MII)
 
 - Conteúdo em inglês:
   - [Next 13 Api Routes](https://www.youtube.com/watch?v=vrR4MlB7nBI)
   - [Learn Next 13 with this project](https://www.youtube.com/watch?v=NgayZAuTgwM)
+  - [Server Actions](https://www.youtube.com/watch?v=O94ESaJtHtM)
 
 **Obs: Ao consultar a documentação ou algum outro meio, lembre-se de certificar que se trata do Next 13**
 
